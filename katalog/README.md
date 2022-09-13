@@ -4,7 +4,7 @@
 > [Link Aplikasi Heroku](https://aplikasi-tugas-danen.herokuapp.com/katalog/) : `https://aplikasi-tugas-danen.herokuapp.com/katalog/`
 
 ### Bagan _Request_ Klien ke Web Aplikasi Berbasis Django
-
+![Bagan_Pola_Client_ke_Web](https://user-images.githubusercontent.com/87986916/189904821-6657b987-7ad1-4e9c-80b0-a804ff9e460c.png)
 Hubungan antara `urls.py` dengan `views.py` adalah petunjuk dari permintaan klien akan ditunjukkan ke data value yang sesuai. Kemudian `views.py` dan `models.py` akan menghubungkan permintaan data terhadap kumpulan data yang tersedia di database. Setelah itu berkas html digunakan untuk menampilkan data yang diminta klien dengan template yang sesuai.
 
 ### Python Virtual Environment
