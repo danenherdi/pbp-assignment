@@ -8,10 +8,18 @@ from django.core import serializers
 # Create your views here.
 def show_watchlist(request):
     data_watchlist = MyWatchlistItem.objects.all()
+    status_watchlist = ""
+
+    # Referensi : https://docs.djangoproject.com/en/4.1/ref/models/querysets/#django.db.models.query.QuerySet.count
+    if MyWatchlistItem.objects.filter(status_watched_film = True).count()>= MyWatchlistItem.objects.filter(status_watched_film = False).count():
+        status_watchlist = "Selamat, kamu sudah banyak menonton!"
+    else:
+        status_watchlist = "Wah, kamu masih sedikit menonton!"
 
     DatagramRequestHandle = {
         'list_watchlist' : data_watchlist,
-        'nama' : 'Danendra Herdiansyah'
+        'nama' : 'Danendra Herdiansyah',
+        'status_watchlist' : status_watchlist
     }
     return render(request, "mywatchlist.html", DatagramRequestHandle)
 
