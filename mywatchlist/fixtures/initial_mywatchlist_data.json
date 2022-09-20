@@ -1,0 +1,112 @@
+[
+    {
+        "model":"mywatchlist.mywatchlistitem",
+        "pk":1,
+        "fields":{
+            "status_watched_film" : true,
+            "title_film": "Narcos",
+            "rating_film": 5,
+            "release_date_film": "28 Agustus 2015",
+            "review_film": "Film ini memberikan rinci serta detail narasi yang sesuai dengan sejarah. Meskipun beberapa momen diceritakan dengan sederhana, film ini tetap dapat memberikan kesan suasana yang asli."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlistitem",
+        "pk":2,
+        "fields":{
+            "status_watched_film" : true,
+            "title_film": "Narcos Mexico",
+            "rating_film": 4,
+            "release_date_film": "16 November 2018",
+            "review_film": "Film ini memberikan detail lanjutan terhadap film seri sebelumnya dengan alur yang jelas sehingga bisa memberikan kesimpulan antara kedua film seri ini."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlistitem",
+        "pk":3,
+        "fields":{
+            "status_watched_film" : false,
+            "title_film": "Free Guy",
+            "rating_film": 3,
+            "release_date_film": "31 Oktober 2021",
+            "review_film": "Film ini memberikan sebuah khas komedi romantis dengan latar belakang yang unik menggunakan film aksi video game."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlistitem",
+        "pk":4,
+        "fields":{
+            "status_watched_film" : true,
+            "title_film": "The Italian Job",
+            "rating_film": 4,
+            "release_date_film": "30 May 2003",
+            "review_film": "Film ini memberikan aksi pencurian dengan komedi yang sesuai sehingga membuat film nya sederhana tetapi menarik."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlistitem",
+        "pk":5,
+        "fields":{
+            "status_watched_film" : false,
+            "title_film": "The Hitman's Bodyguard",
+            "rating_film": 4,
+            "release_date_film": "17 Agustus 2017",
+            "review_film": "Sebuah film yang memberikan aksi yang cukup menarik dengan membawakan khas komedi dengan aktor yang sesuai."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlistitem",
+        "pk":6,
+        "fields":{
+            "status_watched_film" : true,
+            "title_film": "R.I.P.D",
+            "rating_film": 4,
+            "release_date_film": "19 Juli 2013",
+            "review_film": "Sebuah film klasik dengan aksi dan lelucon yang lucu."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlistitem",
+        "pk":7,
+        "fields":{
+            "status_watched_film" : false,
+            "title_film": "Central Intelligence",
+            "rating_film": 3,
+            "release_date_film": "15 Juni 2016",
+            "review_film": "Film ini membawakan aksi yang cukup menarik dengan lelucon sampingan yang lucu."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlistitem",
+        "pk":8,
+        "fields":{
+            "status_watched_film" : true,
+            "title_film": "22 Jump Street",
+            "rating_film": 5,
+            "release_date_film": "18 Juni 2014",
+            "review_film": "Film ini menghadirkan aksi yang kocak dengan aktor yang sesuai sehingga bisa menjadikan film ini berkesan komedinya."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlistitem",
+        "pk":9,
+        "fields":{
+            "status_watched_film" : true,
+            "title_film": "Interstellar",
+            "rating_film": 5,
+            "release_date_film": "6 November 2014",
+            "review_film": "Pemberian prinsip sci-fi yang membuat penontonnya berpikir akan peristiwa yang bisa saja serupa terjadi."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlistitem",
+        "pk":10,
+        "fields":{
+            "status_watched_film" : false,
+            "title_film": "Jason Bourne",
+            "rating_film": 4,
+            "release_date_film": "27 Juli 2016",
+            "review_film": "Penggambaran karakter yang konsisten serta aksi yang berat dan plot yang diceritakan tidak jauh dengan film sebelumnya."
+        }
+    }
+]
