@@ -30,7 +30,7 @@ Setelah membuat aplikasi Django, maka aplikasi tersebut akan dilakukan _deployme
 ### Screenshot akses URL menggunakan Postman
 
 #### HTML
-![Screenshot (382)](https://user-images.githubusercontent.com/87986916/191410691-207fdbb4-7c94-4cf3-bf12-6b1d5a07bb2b.png)
+![Screenshot (388)](https://user-images.githubusercontent.com/87986916/191452558-b98d2b20-e471-41d8-8803-c9dad8ee6169.png)
 
 #### XML
 ![Screenshot (387)](https://user-images.githubusercontent.com/87986916/191411966-ba93023a-7b2f-4a88-bdf8-49bc64a98b6b.png)
