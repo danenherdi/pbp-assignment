@@ -4,33 +4,48 @@
 
   <h1>My Watchlist</h1>
 
-  <h5>Name: </h5>
+  <h3>Name: </h3>
   <p>{{nama}}</p>
 
-  <h5>Student ID: </h5>
+  <h4>Student ID: </h4>
   <p>2106707012</p>
   
-  <hr>
+  <br>
+  <head>
+    <style>
+    table,th{
+      border: 2px solid black;
+      border-collapse: collapse;
+      background-color: #E2DBCC;
+    }
+    td{
+      border: 1px solid black;
+      border-collapse: collapse;
+      background-color: #FFF8E8;
+      font-weight: normal;
+      text-align: center;
+    }
+    </style>
+    </head>  
   <table>
     <tr>
-      <th>Watched</th>
+      <th style="width:5%">Watched</th>
       <th>Title</th>
-      <th>Rating
-      <th>Release Date</th>
+      <th style="width:5%">Rating
+      <th style="width:10%">Release Date</th>
       <th>Review</th>
     </tr>
     {% comment %} Add the data below this line {% endcomment %}
     {% for film in list_watchlist %}
       <tr>
-        <th>{{film.status_watched_film}}</th>
-        <th>{{film.title_film}}</th>
-        <th>{{film.rating_film}}</th>
-        <th>{{film.release_date_film}}</th>
-        <th>{{film.review_film}}</th>
+        <td>{{film.status_watched_film}}</td>
+        <td>{{film.title_film}}</td>
+        <td>{{film.rating_film}}</td>
+        <td>{{film.release_date_film}}</td>
+        <td>{{film.review_film}}</td>
       </tr>
     {% endfor %}
   </table>
-  <hr>
   <br>
   <h4>{{status_watchlist}}</h4>>
 
