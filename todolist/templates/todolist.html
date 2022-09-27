@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+  <h1>To Do List</h1>
+
+  <h3>Name: {{username}}</h3>
+
+  <br>
+
+  <head>
+    <style>
+    table,th{
+      border: 2px solid black;
+      border-collapse: collapse;
+      background-color: #E2DBCC;
+    }
+    td{
+      border: 1px solid black;
+      border-collapse: collapse;
+      background-color: #FFF8E8;
+      font-weight: normal;
+      text-align: center;
+    }
+    </style>
+    </head>  
+  <table>
+    <tr>
+      <th>Tanggal Tugas</th>
+      <th>Judul Tugas</th>
+      <th>Deskripsi Tugas</th>
+    </tr>
+    
+    {% comment %} Add the data below this line {% endcomment %}
+    
+    {% for todolist_task in list_todolist_user %}
+      <tr>
+        <td>{{todolist_task.date}}</td>
+        <td>{{todolist_task.title}}</td>
+        <td>{{todolist_task.description}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <br>
+  <button><a href="{% url 'todolist:create_task' %}">Tambah Task Baru</a></button>
+  <br>
+  <br>
+  <button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+  <br>
+  <h5>Sesi terakhir login: {{ last_login }}</h5>
+  <hr>
+  <h5>dibuat oleh: {{nama}} - {{NPM}}</h5>
+ {% endblock content %}
