@@ -13,17 +13,18 @@
     table,th{
       border: 2px solid black;
       border-collapse: collapse;
-      background-color: #E2DBCC;
+      background-color: #965AA9;
     }
     td{
       border: 1px solid black;
       border-collapse: collapse;
-      background-color: #FFF8E8;
+      background-color: #D6BFE4;
       font-weight: normal;
       text-align: center;
     }
     </style>
-    </head>  
+  </head>  
+    
   <table>
     <tr>
       <th>Tanggal Tugas</th>
@@ -35,9 +36,9 @@
     
     {% for todolist_task in list_todolist_user %}
       <tr>
-        <td>{{todolist_task.date}}</td>
-        <td>{{todolist_task.title}}</td>
-        <td>{{todolist_task.description}}</td>
+        <td style="width:0.5%">{{todolist_task.date}}</td>
+        <td style="width:1.5%">{{todolist_task.title}}</td>
+        <td style="width:10%">{{todolist_task.description}}</td>
       </tr>
     {% endfor %}
   </table>
@@ -47,7 +48,6 @@
   <br>
   <br>
   <button><a href="{% url 'todolist:logout' %}">Logout</a></button>
-  <br>
   <h5>Sesi terakhir login: {{ last_login }}</h5>
   <hr>
   <h5>dibuat oleh: {{nama}} - {{NPM}}</h5>
