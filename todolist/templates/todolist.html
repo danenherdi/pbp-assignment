@@ -1,54 +1,42 @@
 {% extends 'base.html' %}
 
  {% block content %}
+ <head>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'todolist.css' %}">
+</head> 
 
-  <h1>To Do List</h1>
+ <nav class="navbar navbar-light" style="background-color: #D7BCE8;">
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <a class="navbar-brand" href="#">To Do List</a>
+          <span class="navbar-left navbar-text">{{username}}</span> 
+      </div>
 
-  <h3>Name: {{username}}</h3>
+      <ul class="nav navbar-nav navbar-right">
+        <button class="btn btn-outline-dark"><a href="{% url 'todolist:logout' %}">Logout</a></button>
+      </ul>
+  </div>
+</nav>
 
-  <br>
-
-  <head>
-    <style>
-    table,th{
-      border: 2px solid black;
-      border-collapse: collapse;
-      background-color: #965AA9;
-    }
-    td{
-      border: 1px solid black;
-      border-collapse: collapse;
-      background-color: #D6BFE4;
-      font-weight: normal;
-      text-align: center;
-    }
-    </style>
-  </head>  
-    
-  <table>
-    <tr>
-      <th>Tanggal Tugas</th>
-      <th>Judul Tugas</th>
-      <th>Deskripsi Tugas</th>
-    </tr>
-    
-    {% comment %} Add the data below this line {% endcomment %}
-    
-    {% for todolist_task in list_todolist_user %}
-      <tr>
-        <td style="width:0.5%">{{todolist_task.date}}</td>
-        <td style="width:1.5%">{{todolist_task.title}}</td>
-        <td style="width:10%">{{todolist_task.description}}</td>
-      </tr>
-    {% endfor %}
-  </table>
+<div class="body">
+  {% comment %} Add the data below this line {% endcomment %}
+  {% for todolist_task in list_todolist_user %}
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{todolist_task.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Tanggal : {{todolist_task.date}}</h6>
+        <p class="card-text">{{todolist_task.description}}</p>
+      </div>
+    </div>
+  {% endfor %}
 
   <br>
-  <button><a href="{% url 'todolist:create_task' %}">Tambah Task Baru</a></button>
+  <button class="button"><a href="{% url 'todolist:create_task' %}">Tambah Task Baru</a></button>
   <br>
   <br>
-  <button><a href="{% url 'todolist:logout' %}">Logout</a></button>
-  <h5>Sesi terakhir login: {{ last_login }}</h5>
+  <h5 class="sesi">Sesi terakhir login: {{ last_login }}</h5>
   <hr>
-  <h5>dibuat oleh: {{nama}} - {{NPM}}</h5>
+  <h5 class="footer">dibuat oleh: {{nama}} - {{NPM}}</h5>
+</div>
  {% endblock content %}

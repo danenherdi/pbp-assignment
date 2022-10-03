@@ -1,0 +1,54 @@
+.body {
+    border-collapse: collapse;
+    padding: 50px 50px;
+    display: inline-flexbox;
+    justify-content: center;
+    background-color: #372867;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar-brand{
+    color: black;
+}
+.navbar-brand:visited{
+    color: black;
+}
+
+.navbar-text{
+    color: black;
+}
+
+.card{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: black;
+
+}
+
+.button{
+    border: none;
+    padding: 1px 10px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 4px;
+    margin-top: 15px;
+    background-color: white;
+}
+
+.button:hover{
+    background-color:#D7BCE8;
+    transition: .15s;
+}
+
+.button:active{
+    background-color: white;
+    transform: translateX(2px);
+    transform: translateY(2px);
+}
+
+.sesi{
+    color : white;
+}
+.footer{
+    color: white;
+}

@@ -6,39 +6,36 @@
 
 {% block content %}  
 
-<div class = "login">
-    
-    <h1>Task Baru</h1>  
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'create_task.css' %}">
+</head>
 
-    <head>
-        <style>
-        table,th{
-          border: 2px solid black;
-          border-collapse: collapse;
-          font-size : 18px;
-          background-color: #965AA9;
-        }
-        td{
-          border: 2px solid black;
-          border-collapse: collapse;
-          background-color: #D6BFE4;
-          font-weight: normal;
-          text-align: left;
-        }
-        </style>
-    </head>
-
+<div>
+    <h1 class="header">Task Baru</h1>  
         <form method="POST" action="">  
             {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td><input type="submit" value="Create Task"></td> 
-                </tr>
-            </table>  
+
+            <div class="formTask">
+                <table>
+                    <tr>
+                        <td>
+                            {{ form.as_table }}  
+                        </td>
+                    </tr>
+            </div>
+                    <tr>  
+                        <td><input class="button" type="submit" value="Create Task"></td> 
+                    </tr>
         </form>
+                    <tr>
+                        <form method="GET" action="/todolist/">
+                            <td>
+                                <input class="button" type="submit" name="back" value="Back">
+                            </td>
+                        </form>
+                    </tr>                
+                </table>  
+        
 </div>  
-
-<button><a href="{% url 'todolist:show_todolist' %}">Back</a></button>
-
 {% endblock content %}

@@ -22,7 +22,7 @@ Alur data bermula dari pengguna yang mengisi data submisi berbentuk input yang k
 <br>
 <br>
 
-### Pengimplementasian _checklist_ todolist
+### Pengimplementasian _Checklist_ todolist (Tugas 4)
 1. Pembuatan aplikasi bernama `todolist` dilakukan dengan menggunakan perintah `python manage.py startapp todolist` dan menambahkan aplikasi `todolist` ke dalam variabel `INSTALLED_APPS` yang terdapat di `project_django`.
 <br>
 
@@ -48,3 +48,101 @@ Alur data bermula dari pengguna yang mengisi data submisi berbentuk input yang k
 <br>
 
 9. Pembuatan dua akun pengguna dan tiga _dummy_ data dilakukan dengan melakukan registrasi akun yang kemudian digunakan untuk mengisi Task pada todolist.
+
+### Perbedaan dari Inline, Internal, dan External CSS
+1. #### Inline CSS
+    Tipe ini menggunakan atribut `style` yang dimasukkan ke dalam bagian body dari sebuah tag elemen di HTML sehingga satu tag HTML memiliki satu `style` yang unik. Kelebihan dari tipe ini adalah metode ini memiliki cara penempatan kode CSS yang lebih mudah dan cepat ke dalam HTML sehingga sangat berguna ketika ingin menguji ataupun melihat perbedaan style yang telah dibuat. Selain itu tipe ini juga tidak butuh file eksternal. Sedangkan kekurangan dari tipe ini adalah struktur yang dibuat di HTML akan menjadi lebih rumit untuk dibaca. Selain itu dikarenakan satu tag memiliki satu style, maka ketika memiliki style yang banyak akan berpengaruh terhadap ukuran halaman web (file HTML) dan waktu download.
+<br>
+
+2. #### Internal CSS
+    Tipe ini mempunyai tag berupa `<style>` yang berada di dalam bagian `<head>` pada berkas template HTML. Gaya ini biasanya digunakan untuk memodifikasi satu berkas HTML dengan gaya masing-masing yang unik. Sehingga penempatan CSS dilakukan dengan _embedded_ di dalam file HTML. Kelebihan dari gaya ini adalah karena terdapat di dalam file HTML, maka tidak perlu menambahkan file lainnya untuk _styling_. Sedangkan kekurangannya adalah karena CSS terdapat di dalam file HTML, maka ukuran dan waktu pemuatan dari halaman web tersebut terjadi lebih lama dikarenakan ukurannya yang semakin besar.
+<br>
+
+3. #### External CSS
+    Tipe ini membutuhkan file CSS eksternal yang terpisah dengan membuat file `.css` yang kemudian dihubungkan dengan file template HTML dengan tag link. Kelebihan dari tipe ini adalah bisa dihubungkan dengan satu file `.css` untuk _styling_ halaman web yang berbeda-beda. Selain itu dikarenakan kode CSS terdapat di file yang berbeda dengan HTML, maka file HTML memiliki ukuran yang lebih kecil. Sedangkan kekurangan dari tipe ini adalah dikarenakan file HTML dihubungkan dengan file eksternal CSS, maka bisa saja halaman web tidak dapat _rendered_ karena file CSS yang harus di-_load_ terlebih dahulu. Selain itu ketika terjadi penghubungan file CSS yang berbeda-beda, maka halaman web tersebut akan memiliki waktu download yang meningkat.
+
+<br>
+<br>
+
+### Tag HTML5
+HTML5 memiliki beberapa tag yang tidak ada di HTML biasa, contohnya adalah `<header>`, `<footer>`, `<article>`, `<section>`, `<audio>`, `<video>`, `canvas`, dll. Tag `<header>` ini digunakan untuk menyatakan awalan atau _header_ dari sebuah dokumen atau _section_ yang biasanya terdapat judul. Tag `<footer>` digunakan untuk menandakan akhir dari dokumen atau _section_ yang biasanya berisi informasi dari dokumen tersebut. Tag `<article>` digunakan untuk memberikan konten dokumen dari _section_. Tag `<section>` digunakan untuk mendefinisikan _header_, _footer_, dan _article_ yang telah dibuat di dokumen tersebut. Tag `<audio>` digunakan untuk memasukkan audio ke dalam halaman web (dokumen HTML). Tag `<video>` digunakan untuk memasukkan video ke dalam berkas HTML. Tag `<canvas>` ini digunakan untuk membuat sebuah area kosong yang kemudian digunakan untuk menggambar grafik tertentu dengan _scripting_ yang biasanya menggunakan JavaScript. 
+<br>
+<br>
+
+### Tipe-Tipe CSS selector
+1. #### Simple Selectors (elemen/tipe, class, id)
+    Pengelompokkan ini dilakukan dengan mencakup penargetan tag elemen, class, maupun ID dari HTML.<br>
+Contoh dari tag/elemen selector:
+```
+h1{
+    color : ... ;
+    text-align : ... ;
+}
+```
+Contoh dari class selector:
+```
+.login{
+    background-color : ... ;
+    padding : ... ;
+}
+```
+Contoh dari ID selector:
+```
+#header{
+    color : ... ;
+    padding : ... ;
+}
+```
+
+2. #### Combinator Selectors
+    Tipe Selector yang menggabungkan selector lain untuk sebuah elemen dalam dokumen HTML. Terdapat beberapa combinator seperti, _descendant selector_ yang menggunakan `(space)` untuk penurunan sebuah elemen. _Child selector_ yang menggunakan `>` untuk menyatakan anak dari sebuah elemen dalam dokumen HTML. _Adjacent sibling selector_ yang menggunakan `+` untuk menyatakan elemen saudara yang berdekatan dan memiliki elemen dengan induk yang sama. Kemudian yang terakhir adalah _general sibling selector_ yang menggunakan `~` untuk menyatakan elemen saudara kandung umum terhadap pemilihan elemen saudara kandung berikutnya.
+<br>
+
+3. #### Pseudo-class Selectors
+    Pseudo-class digunakan untuk mendefinisikan sebuah tag elemen dengan style yang unik dan berbeda-beda.
+Syntax dari selector ini adalah sebagai berikut:
+```
+selector : pseudo-class{
+    property : value;
+}
+```
+Contohnya adalah
+```
+a : hover{
+    color : blue;
+}
+```
+
+4. #### Pseudo-elements Selectors
+    Pseudo-element digunakan untuk memberi style terhadap tag elemen yang lebih spesifik dengan style yang unik.
+Syntax dari selector ini adalah
+```
+selector :: pseudo-element {
+    property : value;
+}
+```
+Contohnya adalah
+```
+p::first-line {
+    font-weight : bold;
+}
+```
+
+5. #### Attribute Selectors
+Atribut yang dimaksud dihubungkan untuk menata tag elemen HTML terhadap nilai dari atribut tersebut untuk menggunakan style tertentu.
+Contoh dari selector ini adalah
+```
+a[target]{
+    background-color : red;
+}
+a[target = _blank]{
+    backround-color : yellow;
+}
+# [attribute ~= "value"]
+[title ~= "Login"]{
+    background-color : blue;
+}
+```
+<br>
+
+### Pengimplementasian _Checklist_ todolist (Tugas 5)
