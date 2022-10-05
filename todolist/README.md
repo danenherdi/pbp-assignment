@@ -157,3 +157,6 @@ a[target = _blank]{
 
 3. _Responsive web_ dilakukan dengan mengatur automatis dasar dari bootstrap yang dimasukkan ke dalam `base.html` berupa pengambilan link bootstrap dan script untuk pembuatan bootstrap serta masukkan kode berupa `<meta name="viewport" content="width=device-width, initial-scale=1.0">` untuk mengatur layar sesuai perangkat yang digunakan dengan `scaling`. Kemudian untuk mengatur responsive terhadap cards yang ada di halaman utama todolist dilakukan dengan membuat div class baru yang berisi `col-12 col-md-6 col-lg-4`. `col-12` disini digunakan untuk _scaling_ utama dari banyaknya cards. Kemudian untuk mengatur jika layar web sedang dikecilkan, maka dilakukan pengaturan untuk ukuran medium dengan `col-md-6` dimana jika ukuran web sedang medium maka cards yang muncul per-baris adalah 2 (sisa bagi dari scaling utama) serta untuk ukuran large dengan `col-lg-4` dimana jika web sedang ukuran besar maka cards yang muncul per-baris nya adalah 3 cards.
 <br>
+
+4. Pengimplementasian bonus dilakukan dengan menambahkan elemen properti `hover` pada class card di CSS yang kemudian diisi dengan mengganti warna dasar dan warna tulisan menjadi _dark mdoe_ serta memperbesar ukuran cards tersebut dengan transisi untuk _focus mode_.
+<br>
