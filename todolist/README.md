@@ -49,6 +49,9 @@ Alur data bermula dari pengguna yang mengisi data submisi berbentuk input yang k
 
 9. Pembuatan dua akun pengguna dan tiga _dummy_ data dilakukan dengan melakukan registrasi akun yang kemudian digunakan untuk mengisi Task pada todolist.
 
+<br>
+<hr>
+
 ### Perbedaan dari Inline, Internal, dan External CSS
 1. #### Inline CSS
     Tipe ini menggunakan atribut `style` yang dimasukkan ke dalam bagian body dari sebuah tag elemen di HTML sehingga satu tag HTML memiliki satu `style` yang unik. Kelebihan dari tipe ini adalah metode ini memiliki cara penempatan kode CSS yang lebih mudah dan cepat ke dalam HTML sehingga sangat berguna ketika ingin menguji ataupun melihat perbedaan style yang telah dibuat. Selain itu tipe ini juga tidak butuh file eksternal. Sedangkan kekurangan dari tipe ini adalah struktur yang dibuat di HTML akan menjadi lebih rumit untuk dibaca. Selain itu dikarenakan satu tag memiliki satu style, maka ketika memiliki style yang banyak akan berpengaruh terhadap ukuran halaman web (file HTML) dan waktu download.
@@ -146,3 +149,11 @@ a[target = _blank]{
 <br>
 
 ### Pengimplementasian _Checklist_ todolist (Tugas 5)
+1. Kustomisasi templat untuk halaman login, register, todolist, dan create_task dilakukan menggunakan penulisan CSS dengan cara _external style sheet_ dimana menggunakan file eksternal CSS yang bernama `login.css` yang kemudian dihubungkan ke template login dengan `{% load static %}` dan `<link rel="stylesheet" href="{% static '... .css' %}">` pada tag _head_. Lalu penambahan style ke template dilakukan dengan memasukkan style-style yang ingin dimasukkan dengan class selector. Selain itu, kustomisasi dilakukan juga dengan cara _inline_style_sheet_ untuk styling yang berhubungan dengan elemen dari bootstrap. Contoh bootstrap yang dipakai adalah _form-floating_ untuk mengisi form login dan navbar untuk header dari halaman todolist serta button.
+<br>
+
+2. Implementasi cards untuk menampilkan task di halaman utama todolist dilakukan dengan pertama - tama mengatur bootstrap container menjadi `container-fluid` untuk berubah setiap _breakpoint_. Kemudian menggunakan `row g-3` untuk mengatur horizontal dari baris cards. Lalu untuk membuat satu cards untuk satu task, di dalam iterasi for loop `todolist_task` dilakukan pendefinisian class card dengan panjang tertentu. Mendefinisikan satu card dilakukan dengan membuat class `card-body` dimana di dalamnya terdapat `card-title` untuk judul task, `card-subtitle` untuk tanggal pembuatan task tersebut, dan `card-text` untuk deskripsi dari task yang bersangkutan.
+<br>
+
+3. _Responsive web_ dilakukan dengan mengatur automatis dasar dari bootstrap yang dimasukkan ke dalam `base.html` berupa pengambilan link bootstrap dan script untuk pembuatan bootstrap serta masukkan kode berupa `<meta name="viewport" content="width=device-width, initial-scale=1.0">` untuk mengatur layar sesuai perangkat yang digunakan dengan `scaling`. Kemudian untuk mengatur responsive terhadap cards yang ada di halaman utama todolist dilakukan dengan membuat div class baru yang berisi `col-12 col-md-6 col-lg-4`. `col-12` disini digunakan untuk _scaling_ utama dari banyaknya cards. Kemudian untuk mengatur jika layar web sedang dikecilkan, maka dilakukan pengaturan untuk ukuran medium dengan `col-md-6` dimana jika ukuran web sedang medium maka cards yang muncul per-baris adalah 2 (sisa bagi dari scaling utama) serta untuk ukuran large dengan `col-lg-4` dimana jika web sedang ukuran besar maka cards yang muncul per-baris nya adalah 3 cards.
+<br>

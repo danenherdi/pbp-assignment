@@ -80,6 +80,5 @@ def show_todolist(request):
         'NPM' : '2106707012',
         'username'  : user_logged_in.username,
         'list_todolist_user' : data_todolist_user,
-        'last_login' : request.COOKIES['last_login'],
     }
     return render(request, "todolist.html", context)

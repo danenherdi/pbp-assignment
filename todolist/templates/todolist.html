@@ -1,42 +1,53 @@
 {% extends 'base.html' %}
 
+{% block meta %}
+<title>Todolist</title>
+{% endblock meta %}
+
  {% block content %}
- <head>
+<head>
   {% load static %}
   <link rel="stylesheet" href="{% static 'todolist.css' %}">
-</head> 
+</head>
 
- <nav class="navbar navbar-light" style="background-color: #D7BCE8;">
+ <nav class="navbar navbar-light" style="background-color: #21193D;">
   <div class="container-fluid">
       <div class="navbar-header">
           <a class="navbar-brand" href="#">To Do List</a>
-          <span class="navbar-left navbar-text">{{username}}</span> 
+          <span class="navbar-left navbar-text">by {{nama}} - {{NPM}}</span> 
       </div>
 
       <ul class="nav navbar-nav navbar-right">
-        <button class="btn btn-outline-dark"><a href="{% url 'todolist:logout' %}">Logout</a></button>
+        <button class="btn btn-light"><a href="{% url 'todolist:logout' %}" style="text-decoration:none;">Logout</a></button>
       </ul>
   </div>
 </nav>
 
-<div class="body">
-  {% comment %} Add the data below this line {% endcomment %}
-  {% for todolist_task in list_todolist_user %}
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">{{todolist_task.title}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Tanggal : {{todolist_task.date}}</h6>
-        <p class="card-text">{{todolist_task.description}}</p>
-      </div>
-    </div>
-  {% endfor %}
-
-  <br>
-  <button class="button"><a href="{% url 'todolist:create_task' %}">Tambah Task Baru</a></button>
-  <br>
-  <br>
-  <h5 class="sesi">Sesi terakhir login: {{ last_login }}</h5>
-  <hr>
-  <h5 class="footer">dibuat oleh: {{nama}} - {{NPM}}</h5>
+<div>
+  <h4 class="username">Task oleh {{username}}</h4>
 </div>
+
+<div class="section">
+  {% comment %} Add the data below this line {% endcomment %}
+  <div class="container-fluid">
+    <div class="row g-3">
+      {% for todolist_task in list_todolist_user %}
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title" style="font-weight: bold">{{todolist_task.title}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Tanggal : {{todolist_task.date}}</h6>
+                  <p class="card-text">{{todolist_task.description}}</p>
+                </div>
+              </div>     
+            </div>      
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="col-md-12 text-center">
+  <button class="button"><a href="{% url 'todolist:create_task' %}" style="text-decoration : none; color:black;">+</a></button>
+</div>
+
  {% endblock content %}
