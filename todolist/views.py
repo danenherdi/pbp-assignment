@@ -1,11 +1,14 @@
 from datetime import datetime
+from pydoc import describe
+from urllib.request import Request
 from todolist.models import Task
 from todolist.forms import InputTask
 from email import contentmanager
 from multiprocessing import context
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.shortcuts import render, redirect
+from django.core import serializers
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
@@ -69,6 +72,22 @@ def create_task(request):
     }
     return render(request, 'create_task.html', context)
 
+# Method untuk menambahkan task secara asinkronus pada template html
+@login_required(login_url='/todolist/login')
+def add_task_ajax(request):
+     
+    if request.method == "POST":        
+        user_logged_in = request.user
+        title = request.POST.get("title")
+        date = datetime.now()
+        description = request.POST.get("description")
+
+        new_task = Task(user=user_logged_in,title=title, date=date, description=description)
+        new_task.save()
+
+        return HttpResponse(status=200)
+
+    return redirect("todolist:show_todolist")
 
 # Method untuk menampilkan task ke dalam todolist.html
 @login_required(login_url='/todolist/login')
@@ -82,3 +101,9 @@ def show_todolist(request):
         'list_todolist_user' : data_todolist_user,
     }
     return render(request, "todolist.html", context)
+
+# Method untuk menampilan task berbentuk json
+@login_required(login_url='/todolist/login')
+def show_todolist_json(request):
+    data_todolist_user = Task.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', data_todolist_user), content_type="application/json")

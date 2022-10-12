@@ -14,7 +14,7 @@
   <div class="container-fluid">
       <div class="navbar-header">
           <a class="navbar-brand" href="#">To Do List</a>
-          <span class="navbar-left navbar-text">by {{nama}} - {{NPM}}</span> 
+          <span class="navbar-left navbar-text" style="color: white;">by {{nama}} - {{NPM}}</span> 
       </div>
 
       <ul class="nav navbar-nav navbar-right">
@@ -27,27 +27,106 @@
   <h4 class="username">Task oleh {{username}}</h4>
 </div>
 
+<!-- Memunculkan task memakai cards -->
 <div class="section">
-  {% comment %} Add the data below this line {% endcomment %}
   <div class="container-fluid">
-    <div class="row g-3">
-      {% for todolist_task in list_todolist_user %}
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 class="card-title" style="font-weight: bold">{{todolist_task.title}}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Tanggal : {{todolist_task.date}}</h6>
-                  <p class="card-text">{{todolist_task.description}}</p>
-                </div>
-              </div>     
-            </div>      
-      {% endfor %}
+    <divc class="row g-3">
+      <div class="col-12 col-md-6 col-lg-4" id="task_cards">
+      </div>
     </div>
+    <!-- data task akan ditambahkan dengan AJAX get -->
   </div>
 </div>
 
+<!-- Button untuk memunculkan modal -->
 <div class="col-md-12 text-center">
-  <button class="button"><a href="{% url 'todolist:create_task' %}" style="text-decoration : none; color:black;">+</a></button>
+  <button type="button" class="button" data-toggle="modal" data-target="#create_task_modal" style="text-decoration : none; color:black;">+</button>
 </div>
 
- {% endblock content %}
+
+<!-- Modal untuk buat task baru -->
+<div class="modal fade" id="create_task_modal" tabindex="-1" role="dialog" aria-labelledby="titleModal" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+
+          <div class="modal-header">
+              <h3 class="modal-title" id="titleModal">Create New Task</h3>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+              <form action="{% url 'todolist:add_task_ajax' %}" method="post" id="create_task_form">
+                  {% csrf_token %}
+                  
+                  <div class="form-floating mb-3">
+                      <input type="text" name="title" id="floatingTitle" placeholder="Title" class="form-control">
+                      <label for="floatingTitle">Title</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                      <textarea type="text" name="description" id="floatingDescription" placeholder="Description" class="form-control" style="height: 100px"></textarea>
+                      <label for="floatingDescription">Description</label>
+                  </div>
+                  
+                  <div class="form-floating mb-3">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <input class="btn btn-primary" type="submit" name="submit" value="Create" />
+                  </div>   
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<!-- Referensi : -https://stackoverflow.com/questions/33354629/how-to-append-ajax-response-array-of-objects-to-tbody-of-a-table -->
+<!-- - https://www.digitalocean.com/community/tutorials/submitting-ajax-forms-with-jquery -->
+<!-- - https://webdamn.com/bootstrap-modal-form-ajax-submit-with-jquery/ -->
+<script type="text/javascript">
+  $(document).ready(function(){
+    $.getJSON("json/", function(data){
+      $.each(data, function(i, task) {
+        $("#task_cards").append('<div class="card" style="width: 18rem;">' +
+                                  '<div class="card-body">' +
+                                    '<h5 id="title" class="card-title" style="font-weight: bold">' + task.fields.title + '</h5>' +
+                                    '<h6 id="date" class="card-subtitle mb-2 text-muted">' + task.fields.date + '</h6>' +
+                                    '<p id="description" class="card-text">' + task.fields.description + '</p>' +
+                                  '</div>' +
+                                '</div>');
+      });
+    });
+  });
+
+  $("#create_task_form").submit(function(e){
+    $.ajax({
+      url: '/todolist/add/',
+      type: "POST",
+      data: $('#create_task_form').serialize(),
+      
+      success: function(response) {
+        $("#create_task_modal").modal('toggle');
+          title = $("#floatingTitle").val()
+          date = new Date().toJSON().slice(0, 10);
+          description = $("#floatingDescription").val()
+      
+          new_data = {
+            title : title,
+            description : description,
+            date : date
+          }
+          
+          $.post('add/', new_data)
+
+          $("#task_cards").append('<div class="card" style="width: 18rem;">' +
+                                  '<div class="card-body">' +
+                                    '<h5 id="title" class="card-title" style="font-weight: bold">' + title + '</h5>' +
+                                    '<h6 id="date" class="card-subtitle mb-2 text-muted">' + date + '</h6>' +
+                                    '<p id="description" class="card-text">' + description + '</p>' +
+                                  '</div>' +
+                                '</div>');
+                },
+            })
+    e.preventDefault();
+  });
+</script>
+{% endblock content %}
