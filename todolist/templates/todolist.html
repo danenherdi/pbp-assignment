@@ -83,6 +83,8 @@
 <!-- - https://www.digitalocean.com/community/tutorials/submitting-ajax-forms-with-jquery -->
 <!-- - https://webdamn.com/bootstrap-modal-form-ajax-submit-with-jquery/ -->
 <script type="text/javascript">
+
+  // Function untuk mengambil data berbentuk json secara asinkronus
   $(document).ready(function(){
     $.getJSON("json/", function(data){
       $.each(data, function(i, task) {
@@ -97,6 +99,7 @@
     });
   });
 
+  // Function untuk melakukan penambahan Task dengan form yang terhubung dengan modal
   $("#create_task_form").submit(function(e){
     $.ajax({
       url: '/todolist/add/',
@@ -106,7 +109,7 @@
       success: function(response) {
         $("#create_task_modal").modal('toggle');
           title = $("#floatingTitle").val()
-          date = new Date().toJSON().slice(0, 10);
+          date = new Date().toJSON();
           description = $("#floatingDescription").val()
       
           new_data = {
@@ -124,8 +127,8 @@
                                     '<p id="description" class="card-text">' + description + '</p>' +
                                   '</div>' +
                                 '</div>');
-                },
-            })
+      },
+    })
     e.preventDefault();
   });
 </script>

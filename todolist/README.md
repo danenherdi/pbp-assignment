@@ -2,6 +2,9 @@
 ## Danendra Herdiansyah - 2106707012 - PBP C
 <hr>
 
+### Readme Tugas 6
+>[README-TWO.md](todolist\README-TWO.md)
+
 ### Link Aplikasi Heroku
 > [todolist](https://aplikasi-tugas-danen.herokuapp.com/todolist) : `https://aplikasi-tugas-danen.herokuapp.com/todolist`
 <br>
