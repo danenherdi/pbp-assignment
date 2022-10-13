@@ -30,10 +30,7 @@
 <!-- Memunculkan task memakai cards -->
 <div class="section">
   <div class="container-fluid">
-    <divc class="row g-3">
-      <div class="col-12 col-md-6 col-lg-4" id="task_cards">
-      </div>
-    </div>
+    <divc class="row g-3" id="task_cards">
     <!-- data task akan ditambahkan dengan AJAX get -->
   </div>
 </div>
@@ -55,7 +52,7 @@
           </div>
 
           <div class="modal-body">
-              <form action="{% url 'todolist:add_task_ajax' %}" method="post" id="create_task_form">
+              <form method="POST" action="{% url 'todolist:add_task_ajax' %}" id="create_task_form">
                   {% csrf_token %}
                   
                   <div class="form-floating mb-3">
@@ -88,12 +85,14 @@
   $(document).ready(function(){
     $.getJSON("json/", function(data){
       $.each(data, function(i, task) {
-        $("#task_cards").append('<div class="card" style="width: 18rem;">' +
-                                  '<div class="card-body">' +
-                                    '<h5 id="title" class="card-title" style="font-weight: bold">' + task.fields.title + '</h5>' +
-                                    '<h6 id="date" class="card-subtitle mb-2 text-muted">' + task.fields.date + '</h6>' +
-                                    '<p id="description" class="card-text">' + task.fields.description + '</p>' +
-                                  '</div>' +
+        $("#task_cards").append('<div class="col-12 col-md-6 col-lg-4">' +
+                                  '<div class="card" style="width: 18rem;">' +
+                                    '<div class="card-body">' +
+                                      '<h5 id="title" class="card-title" style="font-weight: bold">' + task.fields.title + '</h5>' +
+                                      '<h6 id="date" class="card-subtitle mb-2 text-muted">' + task.fields.date + '</h6>' +
+                                      '<p id="description" class="card-text">' + task.fields.description + '</p>' +
+                                    '</div>' +
+                                  '</div>'+
                                 '</div>');
       });
     });
@@ -109,7 +108,7 @@
       success: function(response) {
         $("#create_task_modal").modal('toggle');
           title = $("#floatingTitle").val()
-          date = new Date().toJSON();
+          date = new Date().toJSON().slice(0,10);
           description = $("#floatingDescription").val()
       
           new_data = {
@@ -120,13 +119,15 @@
           
           $.post('add/', new_data)
 
-          $("#task_cards").append('<div class="card" style="width: 18rem;">' +
-                                  '<div class="card-body">' +
-                                    '<h5 id="title" class="card-title" style="font-weight: bold">' + title + '</h5>' +
-                                    '<h6 id="date" class="card-subtitle mb-2 text-muted">' + date + '</h6>' +
-                                    '<p id="description" class="card-text">' + description + '</p>' +
-                                  '</div>' +
-                                '</div>');
+          $("#task_cards").append('<div class="col-12 col-md-6 col-lg-4">' +
+                                    '<div class="card" style="width: 18rem;">' +
+                                      '<div class="card-body">' +
+                                        '<h5 id="title" class="card-title" style="font-weight: bold">' + title + '</h5>' +
+                                        '<h6 id="date" class="card-subtitle mb-2 text-muted">' + date + '</h6>' +
+                                        '<p id="description" class="card-text">' + description + '</p>' +
+                                      '</div>' +
+                                    '</div>'+
+                                  '</div>');
       },
     })
     e.preventDefault();

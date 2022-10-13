@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 from pydoc import describe
 from urllib.request import Request
 from todolist.models import Task
@@ -38,7 +38,7 @@ def login_user_todolist(request):
         if user is not None:
             login(request, user) # Melakukan login
             response = HttpResponseRedirect(reverse("todolist:show_todolist")) # Membuat response
-            response.set_cookie('last_login', str(datetime.now())) # Membuat dan menambahkan cookie last login ke dalam response
+            response.set_cookie('last_login', str(datetime.datetime.now())) # Membuat dan menambahkan cookie last login ke dalam response
             return response
         else:
             messages.info(request, 'Username atau Password salah!')
@@ -62,7 +62,7 @@ def create_task(request):
     if form.is_valid() and request.method == 'POST':
         new_task = form.save(commit=False)
         new_task.user = request.user
-        new_task.date = datetime.today()
+        new_task.date = datetime.datetime.now()
         new_task.save()
         form.save_m2m()
         return response
@@ -79,7 +79,7 @@ def add_task_ajax(request):
     if request.method == "POST":        
         user_logged_in = request.user
         title = request.POST.get("title")
-        date = datetime.now()
+        date = datetime.datetime.now()
         description = request.POST.get("description")
 
         new_task = Task(user=user_logged_in,title=title, date=date, description=description)
